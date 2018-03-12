@@ -28,11 +28,6 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('picture',)
 
-    # Hopefully this gives us two inputs for name and picture
-    # (we can put more in later, keeping it simple for now)
-
-#class DropCat(forms.Form):
-  #  categories_list = forms.ChoiceField(choices=[for c in categories])
 
 class UploadForm(forms.ModelForm):
     class Meta:
