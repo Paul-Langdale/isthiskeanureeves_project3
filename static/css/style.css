@@ -1,0 +1,52 @@
+body {
+    background-color: 	DodgerBlue;
+	font-family:Arial ,sans-serif;
+	padding: 50px;
+	padding-top: 10px;
+}
+a + a{
+	margin-left: 40px;
+}
+
+
+
+ img {
+	 width: 25%;height:25%;
+	 box-shadow: 4px 4px #5f6360;
+	
+	 
+}
+
+#all {background-color: lightblue;
+padding: 50px ;
+padding-top:30px ;
+
+}
+
+#quote { color:blue;
+}
+
+#nav { background-color: white;
+font-size: 20px;
+text-align: center;
+}
+
+#top {text-align: center;
+}
+
+#content { background-color: gray;
+padding:8px;
+}
+
+#footer{ background-color: lightgray;
+padding :30px;
+}
+h1 {
+    color: white;
+    
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
