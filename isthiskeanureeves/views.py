@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return index(request)
 def index(request):
-    context_dict = {	'boldmessage' : "This is a django variable test",
+    context_dict = {	
 	'keanuimg1': "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Keanu_Reeves_2014.jpg/220px-Keanu_Reeves_2014.jpg" 
 	}
     return render(request, 'isthiskeanureeves/index.html',context_dict)
@@ -17,7 +17,9 @@ def index(request):
 def keanew(request):
     return HttpResponse("This is the kea-new page")
 def about(request):
-    return HttpResponse("This is the about page")
+    context_dict = {}
+    return render(request, 'isthiskeanureeves/about.html',context_dict)
+    
 def topkeanu(request):
     return HttpResponse("This is the top-keanu page")
 def keanothim(request):
@@ -85,7 +87,7 @@ def register(request):
            profile_form = UserProfileForm()
 
        return render(request,
-                     'rango/register.html',
+                     'isthiskeanureeves/register.html',
                      {'user_form': user_form,
                       'profile_form': profile_form,
                       'registered': registered})
@@ -102,17 +104,17 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-               return HttpResponse("Your Rango account is disabled.")
+               return HttpResponse("Your isthiskeanureeves.com account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Wrong username or Wrong password.")
 
     else:
-        return render(request, 'rango/login.html', {})
+        return render(request, 'isthiskeanureeves/login.html', {})
 
 @login_required
 def restricted(request):
-      return render(request, 'rango/restricted.html', {})
+      return render(request, 'isthiskeanureeves/restricted.html', {})
 
     
 @login_required

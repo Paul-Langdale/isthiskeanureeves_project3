@@ -1,32 +1,38 @@
-<!DOCTYPE html>
-<html>
+{% extends 'isthiskeanureeves/base.html' %}
+{% load staticfiles %}
+
     <head lang="en">
 	    <meta charset="UTF-8" />
 		<title>
 		Is This Keanu Reeves?
 		</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href= "{% static "css/style.css" %}">
 	</head>
+	{% block body_block %}
 	<div id="all">
-	<body>
 	<div id="top">
+	<img src="{% static "images/isthiskeanureeves.jpg" %}"alt="is this keanu reeves (text)" /> 
 	<h1> Is This Keanu Reeves? </h1>
 	<div id="quote">
 	<h2> You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes.</h2>
 	</div>
+	
 	</div>
-	<div id="nav"> <a href="{% url '' %}">Top Keanu</a> &nbsp;
-				<a href="{% url '' %}">Kea-New</a> &nbsp;
-				<a href="{% url '' %}">KEAN-NOT HIM</a> &nbsp;
+	<div id="nav"> <a href="{% url 'topkeanu' %}">Top Keanu</a> &nbsp;
+				<a href="{% url 'keanew' %}">Kea-New</a> &nbsp;
+				<a href="{% url 'keanothim' %}">KEAN-NOT HIM</a> &nbsp;
+				<a href="{% url 'about' %}">About</a> &nbsp;
 			
-        </div>
+      <!-- --></div>
 	
 	    <div id="content">
-		<div class="gallery"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
-		</div>
+		
+		<img src="{{ MEDIA_URL}}youngkeanu.jpg" alt="Picture of a young keanu"/>
+		<img src="{{keanuimg1}}" alt="Picture of a keanu"/>
 		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
-		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
-		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
+		<!--<div class="gallery"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
+		</div>-->
 		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
 		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
 		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
@@ -40,5 +46,4 @@
 	<h3> Footer text </h3>
     </div>	
 	</div>
-	</body>
-</html>
+{% endblock %}
