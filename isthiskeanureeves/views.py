@@ -20,8 +20,7 @@ def about(request):
     context_dict = {}
     return render(request, 'isthiskeanureeves/about.html',context_dict)
     
-def topkeanu(request):
-    return HttpResponse("This is the top-keanu page")
+
 def keanothim(request):
     return HttpResponse("This is the kea-not-him page")
 def login(request):
@@ -121,3 +120,28 @@ def restricted(request):
 def user_logout(request):
          logout(request)
          return HttpResponseRedirect(reverse('index'))
+
+def show_category(request, category_name_slug):
+    context_dict = {}
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        #selects only the uploads of a particular category
+        uploads = Upload.objects.filter(category=category)
+        context_dict['uploads'] = uploads
+        context_dict['category'] = category
+    except Category.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['uploads'] = None
+    return render(request, 'isthiskeanureeves/category.html', context_dict)
+
+
+def add_category(request):
+    form = CategoryForm()
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print(form.errors)
+    return render(request, 'isthiskeanureeves/add_category.html', {'form': form})

@@ -12,9 +12,12 @@ def populate():
                   "Kea-New":{"title": "Kea-New","img": "bluekeanu.jpg"},
                   "KEAN-NOT HIM":{"title": "KEAN-NOT HIM","img": "notkeanu.jpg"}}
 
-      for category, category_data in categories.items():
-                            c = add_category(category_data["title"], category_data["img"])
+      for category, category_data in  categories.items():
+                       c = add_category(category_data["title"], category_data["img"])
 
+
+
+      
 def add_category(name, image):
        c = Category.objects.get_or_create(name=name, img=image)[0]
        #c.rating = rating //OUT
@@ -23,5 +26,5 @@ def add_category(name, image):
 
 # Starts execution here
 if __name__ == '__main__':
-    print("Starting Rango population script...")
+    print("Starting isthiskeanureeves population script...")
     populate()
