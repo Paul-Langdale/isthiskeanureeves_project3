@@ -1,0 +1,22 @@
+{% extends 'isthiskeanureeves/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+             about
+{% endblock %}
+
+
+
+{% block body_block %}
+          <p>You have visit this site :{{visits}} times!</p>
+          <h1>About isthiskeanureeves.com </h1>
+          <div>
+               This homepage has been put together by Kim, Paul and Liam.
+			   isthiskeanureeves.com is for finding real keanu reeves from random picture.
+			   Also, user can vote and comment them.<br />
+          </div>
+          <div>
+                
+                <img   src="{{ MEDIA_URL }}youngkeanu.jpg" />
+          </div>
+{% endblock %}
