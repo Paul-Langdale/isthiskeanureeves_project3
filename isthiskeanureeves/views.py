@@ -4,15 +4,16 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from isthiskeanureeves.forms import UserForm, UserProfileForm, CategoryForm
+from isthiskeanureeves.forms import UserForm, UserProfileForm, CategoryForm, PageForm
 from isthiskeanureeves.models import Category, Page
 # Create your views here.
-def home(request):
-    return index(request)
+
 def index(request):
-    context_dict = {	
-	'keanuimg1': "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Keanu_Reeves_2014.jpg/220px-Keanu_Reeves_2014.jpg" 
-	}
+    
+    category_list = Category.objects.order_by('-name')[:5]
+    context_dict = {'categories': category_list}
+
+    # Render the response and send it back!
     return render(request, 'isthiskeanureeves/index.html',context_dict)
 	
 def keanew(request):
@@ -117,6 +118,12 @@ def user_login(request):
 def restricted(request):
       return render(request, 'isthiskeanureeves/restricted.html', {})
 
+
+def some_view(request):
+    if not request.user.is_authenticated():
+        return HttpResponse("You are logged in.")
+    else:
+        return HttpResponse("You are not logged in.")
     
 @login_required
 def user_logout(request):
@@ -136,7 +143,7 @@ def show_category(request, category_name_slug):
         context_dict['uploads'] = None
     return render(request, 'isthiskeanureeves/category.html', context_dict)
 
-
+@login_required
 def add_category(request):
     form = CategoryForm()
     if request.method == 'POST':
@@ -147,3 +154,24 @@ def add_category(request):
         else:
             print(form.errors)
     return render(request, 'isthiskeanureeves/add_category.html', {'form': form})
+
+@login_required
+def add_page(request, category_name_slug):
+       try:
+            category = Category.objects.get(slug=category_name_slug)
+       except Category.DoesNotExist:
+            category = None
+       form = PageForm()
+       if request.method == 'POST':
+            form = PageForm(request.POST)
+            if form.is_valid():
+                  if category:
+                      page = form.save(commit=False)
+                      page.category = category
+                      page.rating = 0
+                      page.save()
+                      return show_category(request, category_name_slug)
+            else:
+                  print(form.errors)
+       context_dict = {'form':form, 'category': category}
+       return render(request, 'isthiskeanureeves/add_page.html', context_dict)

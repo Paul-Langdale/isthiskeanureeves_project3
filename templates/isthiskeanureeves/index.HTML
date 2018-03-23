@@ -27,9 +27,9 @@
       <!-- --></div>
 	
 	    <div id="content">
+		<a href="{% url 'keanew' %}" >{{ page.title }}
+		<img src="{{ MEDIA_URL}}bluekeanu.jpg" alt="Picture of a young keanu"/> </a>
 		
-		<img src="{{ MEDIA_URL}}youngkeanu.jpg" alt="Picture of a young keanu"/>
-		<img src="{{keanuimg1}}" alt="Picture of a keanu"/>
 		<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
 		<!--<div class="gallery"><img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjE0MDY0Ml5BMl5BanBnXkFtZTgwNTI0OTcyMDI@._CR2554,398,788,788_UX402_UY402._SY201_SX201_AL_.jpg" alt="Picture of a keanu" />
 		</div>-->
@@ -46,4 +46,21 @@
 	<h3> Footer text </h3>
     </div>	
 	</div>
+	<div>
+    {% if category %}
+         <h1>{{ category.name }}</h1>
+         {% if pages %}
+              <ul>
+              {% for page in pages %}
+                      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+              {% endfor %}
+              </ul>
+        {% else %}
+              <strong>No pages currently in category.</strong>
+        {% endif %}
+    {% else %}
+         The specified category does not exist!
+    {% endif %}
+    </div>
+
 {% endblock %}
