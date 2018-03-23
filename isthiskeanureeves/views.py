@@ -4,7 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-
+from isthiskeanureeves.forms import UserForm, UserProfileForm, CategoryForm
+from isthiskeanureeves.models import Category, Page
 # Create your views here.
 def home(request):
     return index(request)
@@ -24,7 +25,8 @@ def about(request):
 def keanothim(request):
     return HttpResponse("This is the kea-not-him page")
 def login(request):
-    return HttpResponse("This is the login page")
+    context_dict = {}
+    return render(request, 'isthiskeanureeves/login.html',context_dict)
 def upload(request):
     return HttpResponse("This is the upload page")
 
