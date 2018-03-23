@@ -11,8 +11,11 @@ a + a{
 
 
  img {
-	 width: 25%;height:25%;
-	 box-shadow: 4px 4px #5f6360;
+	  box-shadow: 4px 4px #5f6360;
+	 padding-left:1%;
+	 padding-top: 8px;
+	 width: 30%;height:30%;
+	
 	
 	 
 }
@@ -27,6 +30,7 @@ padding-top:30px ;
 }
 
 #nav { background-color: white;
+padding-top: 8px;
 font-size: 20px;
 text-align: center;
 }
