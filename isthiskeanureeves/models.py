@@ -42,8 +42,14 @@ class Page(models.Model):
 class UserProfile(models.Model):
    
     user = models.OneToOneField(User)
+    username_slug = models.SlugField(unique=True)
     #website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    
+    def save(self, *args, **kwargs):
+        self.username_slug = slugify(self.user.username)
+        super(UserProfile, self).save(*args, **kwargs)
+
    
     def __str__(self):
         return self.user.username
