@@ -5,7 +5,10 @@
       Login
 {% endblock %}
 {% block body_block %}
-<h1>Login to isthiskeanureeves.com</h1>
+<h1>Login to isthiskeanureeves.com</h1
+<div>
+       <img src="{{ MEDIA_URL}}bluekeanu.jpg" alt="Picture of a cool keanu"/> 
+</div>
 <div id = "content">
 <form id="login_form" method="post" action="{% url 'login' %}">
         {% csrf_token %}
