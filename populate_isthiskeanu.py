@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'isthiskeanureeves_project.setti
 import django
 django.setup()
 from isthiskeanureeves.models import Category, Page, UserProfile, User
-from django.template.defaultfilters import slugify
+#from django.template.defaultfilters import slugify
 def populate():
     keanothim = [{"user": "2250052l","title": "Not Keanu"}]
     keanew = [{"user": "2250052l","title": "Young Keanu"}]
@@ -75,14 +75,14 @@ def add_category(name):
     return c
 
 #def add_user(username, email, password): // populate problem. ############################:
-def add_user(username, email, password):
-    user = User.objects.get_or_create(username=username, email=email)[0]
-    user.set_password(password)
-    user.save()
-    slug_username = slugify(username)
-    u = UserProfile.objects.get_or_create(username_slug=slug_username, user_id=user.id)[0]
-    u.save()
-    return u
+#def add_user(username, email, password):
+ #   user = User.objects.get_or_create(username=username, email=email)[0]
+  #  user.set_password(password)
+   # user.save()
+    #slug_username = slugify(username)
+   # u = UserProfile.objects.get_or_create(username_slug=slug_username, user_id=user.id)[0]
+    #u.save()
+    #return u
 
 # Starts execution here
 if __name__ == '__main__':
