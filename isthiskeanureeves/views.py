@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-
+from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
@@ -90,31 +90,37 @@ def register(request):
            profile_form = UserProfileForm()
 
        return render(request,
-                     'isthiskeanureeves/index.html',
+                     'isthiskeanureeves/register.html',
                      {'user_form': user_form,
                       'profile_form': profile_form,
                       'registered': registered})
 
 #login
 def user_login(request):
-    login_error = False
+   
     if request.method == 'POST':
-
+       
         username = request.POST.get('username')
         password = request.POST.get('password')
+
+       
         user = authenticate(username=username, password=password)
+
+       
         if user:
-            #if user.is_active:
-                login(request)#, user)
+            
+            if user.is_active:
+            
+                login(request, user)
                 return HttpResponseRedirect(reverse('index'))
-                
-            #else:
-             #  return HttpResponse("Your Rango account is disabled.")
+            else:
+               
+                return HttpResponse("Your account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Wrong username or Wrong password.")
-
+            return render(request, 'isthiskeanureeves/login.html', {"message": "Invalid login details. Please try again."})
     else:
+      
         return render(request, 'isthiskeanureeves/login.html', {})
 
 @login_required
