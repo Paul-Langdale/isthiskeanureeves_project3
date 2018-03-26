@@ -1,0 +1,35 @@
+{% extends 'isthiskeanureeves/base_boot-strap.html' %}
+{% load staticfiles %}
+
+<!--
+     Template to edit account.
+     Used by two views, for changing Name, etc. and for changing the password.
+     The views simply pass in different forms to display.
+-->
+{% block title_block %}
+    userprofile
+{% endblock %}
+
+{% block head_block %}
+{% endblock %}
+{% block body_block %}
+    <h1>Account details</h1>
+
+	<div>
+        <br/>
+        Username = {{ user.username }}
+        <br/>
+        Email address = {{ user.email }}
+        <br />
+		
+    </div>
+	
+	 <footer class="footer fixed-bottom bg-dark">
+            <div class="container text-center">
+                <p class="footer-p-custom">
+                    HYUNJUN KIM&nbsp;&nbsp;|&nbsp;&nbsp;PAUL LANGDALE&nbsp;&nbsp;|&nbsp;&nbsp;LIAM BRODIE<br/>
+    				isthiskeanureeves &copy; 2018
+                </p>
+            </div>
+        </footer>
+{% endblock %}

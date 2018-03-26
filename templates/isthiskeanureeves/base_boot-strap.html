@@ -44,16 +44,22 @@
 		<li class="nav-item">
             <a class="nav-link disabled" href="#"> disabled </a>
           </li>
+		
+		{% if user.is_authenticated %}
+		<li class="nav-item">
+		<a class="nav-link" href="{% url 'userprofile' %}">My account</a></li>
+		<li class="nav-item">
+		<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+		</li>
+		{% else %}
 		<li class="nav-item">
 		  <a class="nav-link" href="{% url 'login' %}">Sign in</a>
 		 </li>
 		<li class="nav-item">
 		<a class="nav-link" href="{% url 'register' %}">Sign up</a>
 		</li>
-		{% if user.is_authenticated %}
-		<li class="nav-item">
-		<a class="nav-link" href="{% url 'logout' %}">logout</a>
-		</li>
+		  
+		
 		{% endif %}
         </ul>
 		<!-- This is a search box to possibly implement

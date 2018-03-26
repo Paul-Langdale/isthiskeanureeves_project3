@@ -35,7 +35,10 @@ def login(request):
 # Call upload page
 def upload(request):
     return HttpResponse("This is the upload page")
-
+# Call userprofile
+def user_profile(request):
+    context_dict = {}
+    return render(request, 'isthiskeanureeves/userprofile.html',context_dict)
 
 #register
 def register(request):
