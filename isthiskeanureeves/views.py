@@ -27,7 +27,8 @@ def about(request):
     
 # Call Kea-not-him page
 def keanothim(request):
-    return HttpResponse("This is the kea-not-him page")
+    context_dict = {}
+    return render(request, 'isthiskeanureeves/notkeanu.html',context_dict)
 # Call login page
 def login(request):
     context_dict = {}
