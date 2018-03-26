@@ -2,6 +2,9 @@ from django.contrib import admin
 from isthiskeanureeves.models import Category, Page
 from isthiskeanureeves.models import UserProfile
 
+
+#Category and Page class to the admin interface
+
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 

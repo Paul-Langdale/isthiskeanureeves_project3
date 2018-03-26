@@ -9,7 +9,7 @@
     <h1>Register for isthiskeanureeves.com</h1>
     {% if registered %}
           Keanureeves says: <strong>thank you for registering!</strong>
-          <a href="{% url 'index' %}">Return to the homepage.</a><br />
+         <a href="{% url 'login' %}">Sign in here</a><br />
     {% else %}
           Keanureeves says: <strong>register here!</strong><br />
           <form id="user_form" method="post" action="{% url 'register' %}"
@@ -22,7 +22,7 @@
           {{ profile_form.as_p }}
 
           <!-- Provide a button to click to submit the form. -->
-          <input type="submit" name="submit" value="Register" />
+          <input id = "tick" type="image" name="submit" value="Register" src = "{% static 'images/tick-icon.png' %}"/>
     </form>
     {% endif %}
 {% endblock %}

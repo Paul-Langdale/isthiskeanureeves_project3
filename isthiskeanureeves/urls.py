@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^restricted/', views.restricted, name='restricted'),
     url(r'upload/$', views.upload, name='upload'),
     url(r'^logout/$', views.user_logout, name='logout'),
-    url(r'^post/(?P<post_title_slug>[\w\-]+)/$',
-        views.post, name='post'),]
+    
+    ]
