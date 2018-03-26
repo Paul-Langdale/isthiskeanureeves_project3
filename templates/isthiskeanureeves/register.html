@@ -6,14 +6,18 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col-5">
     <h1>Register for isthiskeanureeves.com</h1>
     {% if registered %}
           Keanureeves says: <strong>thank you for registering!</strong>
          <a href="{% url 'login' %}">Sign in here</a><br />
     {% else %}
           Keanureeves says: <strong>register here!</strong><br />
-          <form id="user_form" method="post" action="{% url 'register' %}"
-                     enctype="multipart/form-data">
+         <form class="jquery_validation_form" id="user_form" method="post" action="{% url 'register' %}"
+                  enctype="multipart/form-data">
 
           {% csrf_token %}
 
@@ -21,8 +25,12 @@
           {{ user_form.as_p }}
           {{ profile_form.as_p }}
 
-          <!-- Provide a button to click to submit the form. -->
-          <input id = "tick" type="image" name="submit" value="Register" src = "{% static 'images/tick-icon.png' %}"/>
+          <!-- Provide  click to submit the form. -->
+          <input type="submit" name="submit" value="Register" />
     </form>
     {% endif %}
+	 </div>
+	  <div class="col">
+    </div>
+</div>
 {% endblock %}

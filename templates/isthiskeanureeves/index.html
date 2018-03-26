@@ -21,7 +21,14 @@
 		<div class="container">
 		
         <h1 class="display-3">Is This Keanu Reeves?</h1>
-        <p>These are the top Keanu Reeves images </p>
+        <p>These are the top Keanu Reeves images  </p>
+		{% if user.is_authenticated %}
+                <span style="font-size:1.5em; color:blue"> Share your keanureeves {{ user.username }}!</span>
+                <br />
+        {% else %}
+                <span style="font-size:1.5em; color:blue"> Sign in and share your keanureeves !</span>
+				<br />
+        {% endif %}
 		<h2> You take the red pill—you stay in Wonderland, and I show you how deep the rabbit hole goes.</h2>
       </div>
     

@@ -55,10 +55,9 @@ def register(request):
                     user.save()
                     profile = profile_form.save(commit=False)
                     profile.user = user
-
+                    registered = True
                     if 'picture' in request.FILES:
                         profile.picture = request.FILES['picture']
-
                         profile.save()
 
                         registered = True
@@ -85,7 +84,8 @@ def user_login(request):
         # to request.POST['<variable>'], because the
         # request.POST.get('<variable>') returns None if the
         # value does not exist, while request.POST['<variable>']
-        # will raise a KeyError exception.
+        # will raise a KeyError exception.
+
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -109,7 +109,8 @@ def user_login(request):
       
         return render(request, 'isthiskeanureeves/login.html', {})
 
-# restricted user authentication
+# restricted user authentication
+
 @login_required
 def restricted(request):
       return render(request, 'isthiskeanureeves/restricted.html', {})
