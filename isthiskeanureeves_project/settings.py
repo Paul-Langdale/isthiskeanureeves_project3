@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'isthiskeanureeves',
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/isthiskeanureeves/login/'
+#
+
