@@ -1,0 +1,5 @@
+Django==1.11.7
+pillow == latest
+django-registration-redux == latest
+django-bootstrap-toolkit == latest
+Python == 3.6
